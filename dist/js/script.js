@@ -90,10 +90,13 @@
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'core-js/modules/es.promise.finally'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -273,7 +276,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const forms = document.querySelectorAll('form'),
         message = {
-    loading: 'Загрузка',
+    loading: 'img/spinner.svg',
     success: 'Спасибо! Скоро с вами свяжемся',
     failure: 'Что-то пошло не так...'
   };
@@ -284,24 +287,29 @@ window.addEventListener('DOMContentLoaded', () => {
   function postData(form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const statusMessage = document.createElement('div');
-      statusMessage.classList.add('status');
-      statusMessage.textContent = message.loading;
-      form.append(statusMessage);
-      const r = new XMLHttpRequest();
-      r.open('POST', 'server.php'); // r.setRequestHeader('Content-type', 'multipart/form-data');
-
+      const statusMessage = document.createElement('img');
+      statusMessage.src = message.loading;
+      statusMessage.classList.add('modal__spinner');
+      form.insertAdjacentElement('afterend', statusMessage);
       const formData = new FormData(form);
-      r.send(formData);
-      r.addEventListener('load', () => {
-        if (r.status == 200) {
-          console.log('done!');
-          showThanksModal(message.success);
-          form.reset();
-          statusMessage.remove();
-        } else {
-          showThanksModal(message.failure);
-        }
+      const object = {};
+      formData.forEach((value, key) => {
+        object[key] = value;
+      });
+      fetch('server.php', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(object)
+      }).then(data => {
+        console.log(data);
+        showThanksModal(message.success);
+        statusMessage.remove();
+      }).catch(() => {
+        showThanksModal(message.failure);
+      }).finally(() => {
+        form.reset();
       });
     });
   }
