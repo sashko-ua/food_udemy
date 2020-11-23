@@ -1,0 +1,39 @@
+@media (max-width: 1199px) {
+    .preview {
+        padding: 28px 50px 100px;
+
+        .tabheader {
+            width: 325px;
+        }
+
+        .tabcontainer {
+            width: 100%;
+        }
+
+        .tabcontent {
+            &__descr {
+                width: 530px;
+                height: auto;
+                padding: 25px;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 991px) {
+    .preview {
+
+        .tabcontent {
+            &__descr {
+                top: 240px;
+                right: -235px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 575px) {}
