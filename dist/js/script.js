@@ -2059,19 +2059,19 @@ window.addEventListener('DOMContentLoaded', () => {
       this.parentSelector.append(element);
     }
 
-  }
-
-  getResource('http://localhost:3000/menu').then(data => {
-    data.forEach(({
-      img,
-      altimg,
-      title,
-      descr,
-      price
-    }) => {
-      new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
-    });
-  }); // getResource('http://localhost:3000/menu')
+  } // getResource('http://localhost:3000/menu')
+  //     .then(data => {
+  //         data.forEach(({
+  //             img,
+  //             altimg,
+  //             title,
+  //             descr,
+  //             price
+  //         }) => {
+  //             new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
+  //         });
+  //     });
+  // getResource('http://localhost:3000/menu')
   //     .then(data => createCard(data));
   // function createCard(data) {
   //     data.forEach(({img, altimg, title, descr, price}) => {
@@ -2091,6 +2091,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //     });
   // }
   // Forms
+
 
   const forms = document.querySelectorAll('form'),
         message = {
