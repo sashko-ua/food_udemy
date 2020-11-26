@@ -33,20 +33,44 @@
         &__form {
             justify-content: space-between;
             margin: 35px 0 0;
-            padding: 20px;
+            padding: 0 40px;
+            height: 150px;
+
+            img {
+                margin: 0 auto;
+            }
         }
 
         &__input {
-            margin: 0 15px 35px;
+            margin: 0 10px;
+            width: 220px;
         }
 
         .btn {
-            width: 250px;
-            margin: 0;
+            width: 220px;
+            margin: 0 10px;
         }
     }
 }
 
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+    .order {
+        &__form {
+            img {
+                display: none;
+            }
+        }
+
+        &__input {
+            margin: 0 10px 15px;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 0 10px;
+        }
+    }
+}
 
 @media (max-width: 325px) {}

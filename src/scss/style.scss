@@ -21,7 +21,12 @@
 @import './blocks/order/order-media';
 
 @import './blocks/promotion/promotion';
-@import './blocks/footer/footer';
-@import './blocks/modal/modal';
+@import './blocks/promotion/promotion-media';
 
-@import './base.scss';
+@import './blocks/footer/footer';
+
+@import './blocks/modal/modal';
+@import './blocks/modal/modal-media';
+
+@import './base';
+@import './base-media';

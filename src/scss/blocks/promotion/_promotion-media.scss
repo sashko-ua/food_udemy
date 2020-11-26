@@ -1,0 +1,115 @@
+@media (max-width: 1199px) {
+    .promotion {
+        padding: 70px 20px 240px;
+
+        &__text {
+            width: 50%;
+            padding: 0 30px 0 0;
+        }
+
+        &__timer {
+            .timer {
+                padding-left: 40px;
+
+                &__block {
+                    span {
+                        font-size: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .promotion {
+        padding: 70px 20px 125px;
+
+        .bgc_y {
+            height: 609px !important;
+        }
+
+        &__timer {
+            .timer {
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                #firstLine {
+                    width: 90%;
+                    margin: 0 auto 15px;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 767px) {
+    .promotion {
+        padding: 70px 20px 95px;
+
+        &__timer {
+            .timer {
+                padding-left: 0px;
+
+                &__block {
+                    width: 85px;
+
+                    span {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .promotion {
+        padding: 70px 20px 55px;
+
+        .container {
+            flex-direction: column;
+        }
+
+        .bgc_y {
+            width: 90%;
+            height: 100% !important;
+        }
+
+        &__text {
+            width: 100%;
+        }
+
+        &__timer {
+            margin: 45px 0 0;
+            width: 100%;
+
+
+            .title {
+                text-align: center;
+            }
+
+            .timer {
+                margin-top: 35px;
+                padding: 25px;
+                justify-content: space-around;
+
+                &__block {
+                    width: 95px !important;
+                    margin: 0 15px 15px !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 325px) {
+    .promotion {
+        &__timer {
+            .timer {
+                padding: 0;
+            }
+        }
+    }
+}
