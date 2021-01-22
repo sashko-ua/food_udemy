@@ -506,7 +506,8 @@
     width: 100%;
     background: rgba(249, 254, 126, 0.25); }
     .menu__field .container {
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      justify-content: space-around; }
   .menu__item {
     width: 320px;
     min-height: 450px;

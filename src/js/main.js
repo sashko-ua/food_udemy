@@ -1,7 +1,7 @@
 'use strict';
 
 window.addEventListener('DOMContentLoaded', () => {
-    // __________TABS__________
+    // ----------TABS----------
 
     const tabs = document.querySelectorAll('.tabheader__item'),
         tabsContent = document.querySelectorAll('.tabcontent'),
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // __________TIMER__________
+    // ----------TIMER----------
 
     const deadLine = '2021-10-21';
 
@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     setClock('.timer', deadLine);
 
-    // __________MODAL__________
+    // ----------MODAL----------
 
     const modalTrigger = document.querySelectorAll('[data-modal]'),
         modal = document.querySelector('.modal');
@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // window.addEventListener('scroll', showModalByScroll);
 
 
-    // __________ClassForCards__________
+    // ----------ClassesForCards----------
 
     class MenuCard {
         constructor(src, alt, title, descr, price, parentSelector, ...classes) {
@@ -183,18 +183,31 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // getResource('http://localhost:3000/menu')
-    //     .then(data => {
-    //         data.forEach(({
-    //             img,
-    //             altimg,
-    //             title,
-    //             descr,
-    //             price
-    //         }) => {
-    //             new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
-    //         });
-    //     });
+    //----------CreateCards----------
+
+    async function getResource(url) {
+        let res = await fetch(url);
+
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+        }
+
+        return await res.json();
+    }
+
+    getResource('http://localhost:3000/menu')
+        .then(data => {
+            data.forEach(({
+                img,
+                altimg,
+                title,
+                descr,
+                price
+            }) => {
+                new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
+            });
+        });
+    // ----------AlternativeWayToCreateCards----------
 
     // getResource('http://localhost:3000/menu')
     //     .then(data => createCard(data));
@@ -219,29 +232,30 @@ window.addEventListener('DOMContentLoaded', () => {
     //     });
     // }
 
-    // Forms
+    //----------Forms----------
 
     const forms = document.querySelectorAll('form'),
         message = {
             loading: 'img/spinner.svg',
             success: 'Спасибо! Скоро с вами свяжемся',
             failure: 'Что-то пошло не так...'
-
         };
 
     forms.forEach(e => {
         bindPostData(e);
     });
 
-    async function getResource(url) {
-        let res = await fetch(url);
-
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
+    const postData = async (url, data) => {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: data
+        });
 
         return await res.json();
-    }
+    };
 
     function bindPostData(form) {
         form.addEventListener('submit', (e) => {
